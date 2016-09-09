@@ -47,6 +47,8 @@ while($row = mysql_fetch_array($result))
   }
 echo "</table>";
 echo "<input type='submit' name='submit' value='Delete'/>";
+echo "<a class='btn btn-default' href='web.html' role='button'>add user</a>";
+
 echo "</form>";
  
 mysql_close($con);
