@@ -1,6 +1,6 @@
 <html>
 <head>
-//css
+Table Details
 <style>
 table
 {
@@ -21,10 +21,10 @@ if (!$con)
 mysql_select_db("sales management", $con);
  
 $result = mysql_query("SELECT * FROM users");
- 
+ echo "<form action='display.php' method='post'>";
 echo "<table border='1'>
 <tr>
-<th></th>
+<th>select</th>
 <th>Id</th>
 <th>first_name</th>
 <th>last_name</th>
@@ -46,6 +46,10 @@ while($row = mysql_fetch_array($result))
   echo "</tr>";
   }
 echo "</table>";
+echo "<input type='submit' name='submit' value='Delete'/>";
+echo "<a class='btn btn-default' href='web.html' role='button'>add user</a>";
+
+echo "</form>";
  
 mysql_close($con);
 ?>
