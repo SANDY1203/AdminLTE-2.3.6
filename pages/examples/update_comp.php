@@ -53,14 +53,14 @@
         }
         if (empty($user_id)) {
             $user_idError = 'Please enter user_id';
-            $valid = false; 
+		$valid = false; }
    
          
         // update data
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE company set company_name = ?, company_address = ?, company_phone = ?, company_email = ?, user_id";
+            $sql = "UPDATE company set company_name = ?, company_address = ?, company_phone = ?, company_email = ?, user_id = ?";
             $q = $pdo->prepare($sql);
             $q->execute(array($company_name,$company_address,$company_phone,$company_email,$user_id));
             Database::disconnect();
@@ -69,7 +69,7 @@
      else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM company where id = ?";
+        $sql = "SELECT * FROM company where company_id = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         $data = $q->fetch(PDO::FETCH_ASSOC);
