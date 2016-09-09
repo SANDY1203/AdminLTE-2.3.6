@@ -24,7 +24,7 @@ $result = mysql_query("SELECT * FROM users");
  
 echo "<table border='1'>
 <tr>
-<th></th>
+<th>select</th>
 <th>Id</th>
 <th>first_name</th>
 <th>last_name</th>
