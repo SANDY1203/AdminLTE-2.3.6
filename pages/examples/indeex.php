@@ -80,7 +80,7 @@
             </div>
             <div class="row">
 			 <p>
-                    <a href="create.php" class="btn btn-success">Create</a>
+                    <a href="create_comp.php" class="btn btn-success">Create</a>
                 </p>
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -109,7 +109,7 @@
 							echo '<td width=250>';
                                 echo '<a class="btn" href="read.php?id='.$row['company_id'].'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update.php?id='.$row['company_id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_comp.php?id='.$row['company_id'].'">Update</a>';
                                 echo ' ';
                                 echo '<a class="btn btn-danger" href="delete.php?id='.$row['company_id'].'">Delete</a>';
                                 echo '</td>';
@@ -355,6 +355,141 @@
                                 echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>';
                                 echo ' ';
                                 echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
+                                echo '</td>';
+                            echo '</tr>';
+                   }
+                   Database::disconnect();
+                  ?>
+                  </tbody>
+            </table>
+        </div>
+    </div> <!-- /container -->
+	<div class="container">
+            <div class="row">
+                <h3>PROSERV TABLE DATA</h3>
+            </div>
+            <div class="row">
+			 <p>
+                    <a href="create.php" class="btn btn-success">Create</a>
+                </p>
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>id</th>
+					  <th>product_name</th>
+                      <th>product_description</th>
+                      <th>product_start_price</th>
+					  <th>product_end_price</th>
+					  <th>category</th>
+					  <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                   $pdo = Database::connect();
+                   $sql = 'SELECT * FROM proserv';
+                   foreach ($pdo->query($sql) as $row) {
+                            echo '<tr>';
+                            echo '<td>'. $row['id'] . '</td>';
+							echo '<td>'. $row['product_name'] . '</td>';
+							echo '<td>'. $row['product_description'] . '</td>';
+                            echo '<td>'. $row['product_start_price'] . '</td>';
+                            echo '<td>'. $row['product_end_price'] . '</td>';
+							echo '<td>'. $row['category'] . '</td>';
+							echo '<td width=250>';
+                                echo '<a class="btn" href="read.php?id='.$row['id'].'">Read</a>';
+                                echo ' ';
+                                echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>';
+                                echo ' ';
+                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
+                                echo '</td>';
+                            echo '</tr>';
+                   }
+                   Database::disconnect();
+                  ?>
+                  </tbody>
+            </table>
+        </div>
+    </div> <!-- /container -->
+	<div class="container">
+            <div class="row">
+                <h3>PROJECTSERV_PROJECT TABLE DATA</h3>
+            </div>
+            <div class="row">
+			 <p>
+                    <a href="create.php" class="btn btn-success">Create</a>
+                </p>
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>id</th>
+					  <th>proserv_id</th>
+                      <th>project_contractor_id</th>
+                      <th>project_price</th>
+					  <th>project_team</th>
+					  <th>project_status</th>
+					  <th>category_proserv_project</th>
+					  <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                   $pdo = Database::connect();
+                   $sql = 'SELECT * FROM proserv_project';
+                   foreach ($pdo->query($sql) as $row) {
+                            echo '<tr>';
+                            echo '<td>'. $row['id'] . '</td>';
+							echo '<td>'. $row['proserv_id'] . '</td>';
+							echo '<td>'. $row['project_contractor_id'] . '</td>';
+                            echo '<td>'. $row['project_price'] . '</td>';
+                            echo '<td>'. $row['project_team'] . '</td>';
+							echo '<td>'. $row['project_status'] . '</td>';
+                            echo '<td>'. $row['category_proserv_project'] . '</td>';
+							echo '<td width=250>';
+                                echo '<a class="btn" href="read.php?id='.$row['id'].'">Read</a>';
+                                echo ' ';
+                                echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>';
+                                echo ' ';
+                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
+                                echo '</td>';
+                            echo '</tr>';
+                   }
+                   Database::disconnect();
+                  ?>
+                  </tbody>
+            </table>
+        </div>
+    </div> <!-- /container -->
+	<div class="container">
+            <div class="row">
+                <h3>QUESTIONS TABLE DATA</h3>
+            </div>
+            <div class="row">
+			 <p>
+                    <a href="create.php" class="btn btn-success">Create</a>
+                </p>
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>q_id</th>
+					  <th>questions</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                   $pdo = Database::connect();
+                   $sql = 'SELECT * FROM questions';
+                   foreach ($pdo->query($sql) as $row) {
+                            echo '<tr>';
+                            echo '<td>'. $row['q_id'] . '</td>';
+							echo '<td>'. $row['question'] . '</td>';
+							echo '<td width=250>';
+                                echo '<a class="btn" href="read.php?id='.$row['q_id'].'">Read</a>';
+                                echo ' ';
+                                echo '<a class="btn btn-success" href="update.php?id='.$row['q_id'].'">Update</a>';
+                                echo ' ';
+                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['q_id'].'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }

@@ -12,7 +12,7 @@
      
     if ( !empty($_POST)) {
         // keep track validation errors
-        $idError = null;
+        
         $first_nameError = null;
         $last_nameError = null;
 		$emailError = null;
@@ -20,7 +20,7 @@
         $roleError = null;
          
         // keep track post values
-     	$id = $_POST['id'];
+     	
         $first_name = $_POST['first_name'];
 		$last_name = $_POST['last_name'];
         $email = $_POST['email'];
@@ -29,9 +29,7 @@
          
         // validate input
         $valid = true;
-        if (empty($id)) {
-            $idError = 'Please enter id';
-            $valid = false;
+       
         }
 		if (empty($first_name)) {
             $first_nameError = 'Please enter name';
@@ -61,20 +59,19 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE users  set id = ?, first_name = ?, last_name = ?, email = ?, password =?, role = ?, WHERE id = ?";
+            $sql = "UPDATE users set first_name = ?, last_name = ?, email = ?, password = ?, role = ? WHERE id = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($id,$first_name,$last_name,$email,$password,$role,$id));
+            $q->execute(array($first_name,$last_name,$email,$password,$role,$id));
             Database::disconnect();
             header("Location: indeex.php");
         }
-    } else {
+     else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT * FROM users where id = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         $data = $q->fetch(PDO::FETCH_ASSOC);
-		$id = $data['id'];
 		$first_name = $data['first_name'];
         $last_name = $data['last_name'];
         $email = $data['email'];
@@ -120,7 +117,12 @@
                     </div>
              
                     <form class="form-horizontal" action="update.php?id=<?php echo $id?>" method="post">
+
                       <div class="control-group <?php echo !empty($first_nameError)?'error':'';?>">
+
+                     
+					  <div class="control-group <?php echo !empty($first_nameError)?'error':'';?>">
+
                         <label class="control-label">first_name</label>
                         <div class="controls">
                             <input name="first_name" type="text"  placeholder="first_name" value="<?php echo !empty($first_name)?$first_name:'';?>">
