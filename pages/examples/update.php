@@ -120,16 +120,7 @@
                     </div>
              
                     <form class="form-horizontal" action="update.php?id=<?php echo $id?>" method="post">
-                      <div class="control-group <?php echo !empty($idError)?'error':'';?>">
-                        <label class="control-label">id</label>
-                        <div class="controls">
-                            <input name="id" type="int"  placeholder="id" value="<?php echo !empty($id)?$id:'';?>">
-                            <?php if (!empty($idError)): ?>
-                                <span class="help-inline"><?php echo $idError;?></span>
-                            <?php endif; ?>
-                        </div>
-                      </div>
-					  <div class="control-group <?php echo !empty($first_nameError)?'error':'';?>">
+                      <div class="control-group <?php echo !empty($first_nameError)?'error':'';?>">
                         <label class="control-label">first_name</label>
                         <div class="controls">
                             <input name="first_name" type="text"  placeholder="first_name" value="<?php echo !empty($first_name)?$first_name:'';?>">

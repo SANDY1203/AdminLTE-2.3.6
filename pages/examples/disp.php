@@ -52,7 +52,7 @@ echo "<table border='1'>
 <th>last_name</th>
 <th>email</th>
 <th>password</th>
-<th>roles</th>
+<th>role</th>
 </tr>";
  
 while($row = mysql_fetch_array($result))
