@@ -18,12 +18,13 @@ if (!$con)
   die('Could not connect: ' . mysql_error());
   }
  
-mysql_select_db("sales", $con);
+mysql_select_db("sales management", $con);
  
 $result = mysql_query("SELECT * FROM users");
  
 echo "<table border='1'>
 <tr>
+<th></th>
 <th>Id</th>
 <th>first_name</th>
 <th>last_name</th>
@@ -35,6 +36,7 @@ echo "<table border='1'>
 while($row = mysql_fetch_array($result))
   {
   echo "<tr>";
+  echo "<td><input type='checkbox' name='check_list[]' value=". $row['id'] ."><label>". $row['id'] ."</label></td>";
   echo "<td>" . $row['id'] . "</td>";
   echo "<td>" . $row['first_name'] . "</td>";
   echo "<td>" . $row['last_name'] . "</td>";
