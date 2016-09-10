@@ -60,7 +60,7 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE company set company_name = ?, company_address = ?, company_phone = ?, company_email = ?, user_id";
+            $sql = "UPDATE company set company_name = ?, company_address = ?, company_phone = ?, company_email = ?, user_id where company_id = ?";
             $q = $pdo->prepare($sql);
             $q->execute(array($company_name,$company_address,$company_phone,$company_email,$user_id));
             Database::disconnect();
@@ -69,7 +69,7 @@
      else {
         $pdo = Database::connect();
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM company where id = ?";
+        $sql = "SELECT * FROM company where company_id = ?";
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         $data = $q->fetch(PDO::FETCH_ASSOC);
@@ -116,6 +116,7 @@
                     <div class="row">
                         <h3>Update a Company</h3>
                     </div>
+					
              
                     <form class="form-horizontal" action="update_comp.php?id=<?php echo $id?>" method="post">
 
@@ -123,8 +124,7 @@
 
                      
 					  <div class="control-group <?php echo !empty($company_nameError)?'error':'';?>">
-
-                        <label class="control-label">company_name</label>
+					  <label class="control-label">company_name</label>
                         <div class="controls">
                             <input name="company_name" type="text"  placeholder="company_name" value="<?php echo !empty($company_name)?$company_name:'';?>">
                             <?php if (!empty($company_nameError)): ?>
@@ -174,7 +174,7 @@
                         </div>
                     </form>
                 </div>
-                 
-    </div> <!-- /container -->
+               
+	</div><!-- /container -->
   </body>
 </html>
