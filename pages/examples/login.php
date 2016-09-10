@@ -21,11 +21,19 @@ if($username && $password)
 	if($dbusername == $username && $dbpassword == $password && $dbtype == "admin")
 	{
 		
-		echo file_get_contents("web.html");
+		header("Location: indeex.php");
 	}
-	elseif($dbusername == $username && $dbpassword == $password)
+	elseif($dbusername == $username && $dbpassword == $password && $dbtype == "sales")
 	{
-		echo file_get_contents("index.html");
+		header("Location: indeex.php");
+	}
+	elseif($dbusername == $username && $dbpassword == $password && $dbtype == "project_manager")
+	{
+		header("Location: indeex.php");
+	}
+	elseif($dbusername == $username && $dbpassword == $password && $dbtype == "company")
+	{
+		header("Location: indeex.php");
 	}
 	else
 	{
