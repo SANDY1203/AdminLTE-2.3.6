@@ -107,11 +107,11 @@
                             echo '<td>'. $row['company_email'] . '</td>';
 							echo '<td>'. $row['user_id'] . '</td>';
 							echo '<td width=250>';
-                                echo '<a class="btn" href="read.php?id='.$row['company_id'].'">Read</a>';
+                                echo '<a class="btn" href="read_comp.php?id='.$row['company_id'].'">Read</a>';
                                 echo ' ';
                                 echo '<a class="btn btn-success" href="update_comp.php?id='.$row['company_id'].'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['company_id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_comp.php?id='.$row['company_id'].'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }
@@ -127,7 +127,7 @@
             </div>
             <div class="row">
 			 <p>
-                    <a href="create.php" class="btn btn-success">Create</a>
+                    <a href="create_contact.php" class="btn btn-success">Create</a>
                 </p>
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -158,11 +158,11 @@
                             echo '<td>'. $row['contact_email_two'] . '</td>';
 							echo '<td>'. $row['contact_company_allo'] . '</td>';
 							echo '<td width=250>';
-                                echo '<a class="btn" href="read.php?id='.$row['id'].'">Read</a>';
+                                echo '<a class="btn" href="read_contact.php?id='.$row['id'].'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_contact.php?id='.$row['id'].'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_contact.php?id='.$row['id'].'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }
@@ -178,7 +178,7 @@
             </div>
             <div class="row">
 			 <p>
-                    <a href="create.php" class="btn btn-success">Create</a>
+                    <a href="create_feedback.php" class="btn btn-success">Create</a>
                 </p>
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -211,11 +211,11 @@
 							echo '<td>'. $row['remarks'] . '</td>';
 							echo '<td>'. $row['contact_id'] . '</td>';
 							echo '<td width=250>';
-                                echo '<a class="btn" href="read.php?id='.$row['id'].'">Read</a>';
+                                echo '<a class="btn" href="read_feedback.php?id='.$row['id'].'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_feedback.php?id='.$row['id'].'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_feedback.php?id='.$row['id'].'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }
@@ -231,7 +231,7 @@
             </div>
             <div class="row">
 			 <p>
-                    <a href="create.php" class="btn btn-success">Create</a>
+                    <a href="create_team.php" class="btn btn-success">Create</a>
                 </p>
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -252,11 +252,11 @@
 							echo '<td>'. $row['team_name'] . '</td>';
 							echo '<td>'. $row['team_lead'] . '</td>';
                             echo '<td width=250>';
-                                echo '<a class="btn" href="read.php?id='.$row['team_id'].'">Read</a>';
+                                echo '<a class="btn" href="read_team.php?id='.$row['team_id'].'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update.php?id='.$row['team_id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_team.php?id='.$row['team_id'].'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['team_id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_team.php?id='.$row['team_id'].'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }
@@ -272,7 +272,7 @@
             </div>
             <div class="row">
 			 <p>
-                    <a href="create.php" class="btn btn-success">Create</a>
+                    <a href="create_team_mem.php" class="btn btn-success">Create</a>
                 </p>
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -299,11 +299,11 @@
                             echo '<td>'. $row['team_m_employement_status'] . '</td>';
 							echo '<td>'. $row['team_id'] . '</td>';
 							echo '<td width=250>';
-                                echo '<a class="btn" href="read.php?id='.$row['team_m_id'].'">Read</a>';
+                                echo '<a class="btn" href="read_team_mem.php?id='.$row['team_m_id'].'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update.php?id='.$row['team_m_id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_team_mem.php?id='.$row['team_m_id'].'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['team_m_id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_team_mem.php?id='.$row['team_m_id'].'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }
