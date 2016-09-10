@@ -319,7 +319,7 @@
             </div>
             <div class="row">
 			 <p>
-                    <a href="create.php" class="btn btn-success">Create</a>
+                    <a href="create_project.php" class="btn btn-success">Create</a>
                 </p>
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -350,11 +350,11 @@
                             echo '<td>'. $row['project_status'] . '</td>';
 							echo '<td>'. $row['user_id'] . '</td>';
 							echo '<td width=250>';
-                                echo '<a class="btn" href="read.php?id='.$row['id'].'">Read</a>';
+                                echo '<a class="btn" href="read_project.php?id='.$row['id'].'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_project.php?id='.$row['id'].'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_project.php?id='.$row['id'].'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }
@@ -370,7 +370,7 @@
             </div>
             <div class="row">
 			 <p>
-                    <a href="create.php" class="btn btn-success">Create</a>
+                    <a href="create_proserv.php" class="btn btn-success">Create</a>
                 </p>
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -397,11 +397,11 @@
                             echo '<td>'. $row['product_end_price'] . '</td>';
 							echo '<td>'. $row['category'] . '</td>';
 							echo '<td width=250>';
-                                echo '<a class="btn" href="read.php?id='.$row['id'].'">Read</a>';
+                                echo '<a class="btn" href="read_proserv.php?id='.$row['id'].'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_proserv.php?id='.$row['id'].'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_proserv.php?id='.$row['id'].'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }
@@ -417,7 +417,7 @@
             </div>
             <div class="row">
 			 <p>
-                    <a href="create.php" class="btn btn-success">Create</a>
+                    <a href="create_proserv_project.php" class="btn btn-success">Create</a>
                 </p>
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -446,11 +446,11 @@
 							echo '<td>'. $row['project_status'] . '</td>';
                             echo '<td>'. $row['category_proserv_project'] . '</td>';
 							echo '<td width=250>';
-                                echo '<a class="btn" href="read.php?id='.$row['id'].'">Read</a>';
+                                echo '<a class="btn" href="read_proserv_project.php?id='.$row['id'].'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_proserv_project.php?id='.$row['id'].'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_proserv_project.php?id='.$row['id'].'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }
@@ -466,7 +466,7 @@
             </div>
             <div class="row">
 			 <p>
-                    <a href="create.php" class="btn btn-success">Create</a>
+                    <a href="create_quation.php" class="btn btn-success">Create</a>
                 </p>
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -485,11 +485,11 @@
                             echo '<td>'. $row['q_id'] . '</td>';
 							echo '<td>'. $row['question'] . '</td>';
 							echo '<td width=250>';
-                                echo '<a class="btn" href="read.php?id='.$row['q_id'].'">Read</a>';
+                                echo '<a class="btn" href="read_quation.php?id='.$row['q_id'].'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update.php?id='.$row['q_id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_quation.php?id='.$row['q_id'].'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['q_id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_quation.php?id='.$row['q_id'].'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }

@@ -1,0 +1,164 @@
+<?php
+     
+    require 'connect.php';
+ 
+    if ( !empty($_POST)) {
+        // keep track validation errors
+        $idError = null;
+        $product_nameError = null;
+        $product_descriptionError = null;
+		$product_start_priceError = null;
+        $product_end_priceError = null;
+        $categoryError = null;
+         
+        // keep track post values
+		$id = $_POST['id'];
+        $product_name = $_POST['product_name'];
+		$product_description = $_POST['product_description'];
+        $product_start_price = $_POST['product_start_price'];
+        $product_end_price = $_POST['product_end_price'];
+		$category = $_POST['category'];
+		         
+        // validate input
+        $valid = true;
+        if (empty($id)) {
+            $idError = 'Please enter id';
+            $valid = false;
+        }
+		if (empty($product_name)) {
+            $product_nameError = 'Please enter name';
+            $valid = false;
+        }
+         if (empty($product_description)) {
+            $product_descriptionError = 'Please enter product_description';
+            $valid = false;
+        }
+        if (empty($product_start_price)) {
+            $product_start_priceError = 'Please enter product_start_price Address';
+            $valid = false;
+        } 
+         if (empty($product_end_price)) {
+            $product_end_priceError = 'Please enter product_end_price';
+            $valid = false;
+        }
+        if (empty($category)) {
+            $categoryError = 'Please enter category';
+            $valid = false;
+        }
+		
+         
+        // insert data
+        if ($valid) {
+            $pdo = Database::connect();
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "INSERT INTO proserv (id,product_name,product_description,product_start_price,product_end_price,category) values(?, ?, ?, ?, ?, ?)";
+            $q = $pdo->prepare($sql);
+            $q->execute(array($id,$product_name,$product_description,$product_start_price,$product_end_price,$category));
+            Database::disconnect();
+            header("Location: indeex.php");
+        }
+    }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | Log in</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="../../plugins/iCheck/square/blue.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+ 
+<body>
+    <div class="container">
+     
+                <div class="span10 offset1">
+                    <div class="row">
+                        <h3>Create a User</h3>
+                    </div>
+             
+                    <form class="form-horizontal" action="create_proserv.php" method="post">
+                      <div class="control-group <?php echo !empty($idError)?'error':'';?>">
+                        <label class="control-label">id</label>
+                        <div class="controls">
+                            <input name="id" type="int"  placeholder="id" value="<?php echo !empty($id)?$id:'';?>">
+                            <?php if (!empty($idError)): ?>
+                                <span class="help-inline"><?php echo $idError;?></span>
+                            <?php endif; ?>
+                        </div>
+                      </div>
+					  <div class="control-group <?php echo !empty($product_nameError)?'error':'';?>">
+                        <label class="control-label">product_name</label>
+                        <div class="controls">
+                            <input name="product_name" type="text"  placeholder="product_name" value="<?php echo !empty($product_name)?$product_name:'';?>">
+                            <?php if (!empty($product_nameError)): ?>
+                                <span class="help-inline"><?php echo $product_nameError;?></span>
+                            <?php endif; ?>
+                        </div>
+                      </div>
+					  <div class="control-group <?php echo !empty($product_descriptionError)?'error':'';?>">
+                        <label class="control-label">product_description</label>
+                        <div class="controls">
+                            <input name="product_description" type="text"  placeholder="product_description" value="<?php echo !empty($product_description)?$product_description:'';?>">
+                            <?php if (!empty($product_descriptionError)): ?>
+                                <span class="help-inline"><?php echo $product_descriptionError;?></span>
+                            <?php endif; ?>
+                        </div>
+                      </div>
+                      <div class="control-group <?php echo !empty($product_start_priceError)?'error':'';?>">
+                        <label class="control-label">product_start_price</label>
+                        <div class="controls">
+                            <input name="product_start_price" type="text" placeholder="product_start_price Address" value="<?php echo !empty($product_start_price)?$product_start_price:'';?>">
+                            <?php if (!empty($product_start_priceError)): ?>
+                                <span class="help-inline"><?php echo $product_start_priceError;?></span>
+                            <?php endif;?>
+                        </div>
+                      </div>
+					  <div class="control-group <?php echo !empty($product_end_priceError)?'error':'';?>">
+                        <label class="control-label">product_end_price</label>
+                        <div class="controls">
+                            <input name="product_end_price" type="product_end_price"  placeholder="product_end_price" value="<?php echo !empty($product_end_price)?$product_end_price:'';?>">
+                            <?php if (!empty($product_end_priceError)): ?>
+                                <span class="help-inline"><?php echo $product_end_priceError;?></span>
+                            <?php endif; ?>
+                        </div>
+                      </div>
+                      <div class="control-group <?php echo !empty($categoryError)?'error':'';?>">
+                        <label class="control-label">category</label>
+                        <div class="controls">
+                            <input name="category" type="text"  placeholder="category" value="<?php echo !empty($category)?$category:'';?>">
+                            <?php if (!empty($categoryError)): ?>
+                                <span class="help-inline"><?php echo $categoryError;?></span>
+                            <?php endif;?>
+                        </div>
+                      </div>
+					  </div>
+                      
+                      <div class="form-actions">
+                          <button type="submit" class="btn btn-success">Create</button>
+                          <a class="btn" href="indeex.php">Back</a>
+                        </div>
+                    </form>
+                </div>
+                 
+    </div> <!-- /container -->
+  </body>
+</html>
+

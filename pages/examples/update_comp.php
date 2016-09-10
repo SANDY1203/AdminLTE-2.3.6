@@ -60,9 +60,9 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "UPDATE company set company_name = ?, company_address = ?, company_phone = ?, company_email = ?, user_id = ?";
+            $sql = "UPDATE company set company_name = ?, company_address = ?, company_phone = ?, company_email = ?, user_id = ? WHERE company_id = ?";
             $q = $pdo->prepare($sql);
-            $q->execute(array($company_name,$company_address,$company_phone,$company_email,$user_id));
+            $q->execute(array($company_name,$company_address,$company_phone,$company_email,$user_id,$id));
             Database::disconnect();
             header("Location: indeex.php");
         }
