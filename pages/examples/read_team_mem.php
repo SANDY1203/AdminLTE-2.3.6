@@ -4,6 +4,9 @@
     if ( !empty($_GET['id'])) {
         $id = $_REQUEST['id'];
     }
+	if ( !empty($_GET['val'])) {
+        $val = $_REQUEST['val'];
+    }
      
     if ( null==$id ) {
         header("Location: indeex.php");
@@ -106,8 +109,17 @@
                         </div>
                       </div>
                         <div class="form-actions">
-                          <a class="btn" href="indeex.php">Back</a>
-                       </div>
+<?php
+						if($val == "company"){
+						echo "<a class='btn' href='company_index.php'>Back</a>";}
+						elseif($val == "sales"){
+						echo "<a class='btn' href='sales_index.php'>Back</a>";}
+						elseif($val == "prom"){
+						echo "<a class='btn' href='project_manager_index.php'>Back</a>";}
+						else{
+						echo "<a class='btn' href='indeex.php'>Back</a>";}
+						
+						  ?>                       </div>
                      
                       
                     </div>

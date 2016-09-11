@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php $val= "prom"; ?>
 <html lang="en">
 <head>
    <meta charset="utf-8">
@@ -32,7 +33,7 @@
             </div>
             <div class="row">
 			 <p>
-                    <a href="create_team.php" class="btn btn-success">Create</a>
+                    <a href="create_team.php?val=<?php echo $val?>" class="btn btn-success">Create</a>
                 </p>
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -45,7 +46,8 @@
                   </thead>
                   <tbody>
                   <?php
-				   include 'connect.php';
+				  				  include 'connect.php';
+
                    $pdo = Database::connect();
                    $sql = 'SELECT * FROM team';
                    foreach ($pdo->query($sql) as $row) {
@@ -54,11 +56,11 @@
 							echo '<td>'. $row['team_name'] . '</td>';
 							echo '<td>'. $row['team_lead'] . '</td>';
                             echo '<td width=250>';
-                                echo '<a class="btn" href="read_team.php?id='.$row['team_id'].'">Read</a>';
+                                echo '<a class="btn" href="read_team.php?id='.$row['team_id'].'&val='.$val.'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update_team.php?id='.$row['team_id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_team.php?id='.$row['team_id'].'&val='.$val.'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete_team.php?id='.$row['team_id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_team.php?id='.$row['team_id'].'&val='.$val.'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }
@@ -68,13 +70,13 @@
             </table>
         </div>
     </div> <!-- /container -->
-	<div class="container">
+	<<div class="container">
             <div class="row">
                 <h3>TEAM MEMBERS TABLE DATA</h3>
             </div>
             <div class="row">
 			 <p>
-                    <a href="create_team_mem.php" class="btn btn-success">Create</a>
+                    <a href="create_team_mem.php?val=<?php echo $val?>" class="btn btn-success">Create</a>
                 </p>
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -101,11 +103,11 @@
                             echo '<td>'. $row['team_m_employement_status'] . '</td>';
 							echo '<td>'. $row['team_id'] . '</td>';
 							echo '<td width=250>';
-                                echo '<a class="btn" href="read_team_mem.php?id='.$row['team_m_id'].'">Read</a>';
+                                echo '<a class="btn" href="read_team_mem.php?id='.$row['team_m_id'].'&val='.$val.'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update_team_mem.php?id='.$row['team_m_id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_team_mem.php?id='.$row['team_m_id'].'&val='.$val.'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete_team_mem.php?id='.$row['team_m_id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_team_mem.php?id='.$row['team_m_id'].'&val='.$val.'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }
@@ -115,3 +117,6 @@
             </table>
         </div>
     </div> <!-- /container -->
+	</body>
+	</html>
+	

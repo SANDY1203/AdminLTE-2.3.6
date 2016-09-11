@@ -5,6 +5,9 @@
     if ( !empty($_GET['id'])) {
         $id = $_REQUEST['id'];
     }
+	 if ( !empty($_GET['val'])) {
+        $val = $_REQUEST['val'];
+    }
      
     if ( null==$id ) {
         header("Location: indeex.php");
@@ -60,19 +63,29 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-<<<<<<< HEAD
             $sql = "UPDATE company set company_name = ?, company_address = ?, company_phone = ?, company_email = ?, user_id = ? WHERE company_id = ?";
-=======
-<<<<<<< HEAD
-            $sql = "UPDATE company set company_name = ?, company_address = ?, company_phone = ?, company_email = ?, user_id where company_id = ?";
-=======
-            $sql = "UPDATE company set company_name = ?, company_address = ?, company_phone = ?, company_email = ?, user_id = ?";
->>>>>>> origin/combine
->>>>>>> origin/combine
+
+           
+          
             $q = $pdo->prepare($sql);
             $q->execute(array($company_name,$company_address,$company_phone,$company_email,$user_id,$id));
             Database::disconnect();
-            header("Location: indeex.php");
+            if($val == "company")
+		{
+		header("Location: company_index.php");
+		}
+		elseif($val == "sales")
+		{
+		header("Location: sales_index.php");
+		}
+		elseif($val == "prom")
+		{
+		header("Location: project_manager.php");
+		}					
+		else
+		{
+		header("Location: indeex.php");
+		}
         }
      else {
         $pdo = Database::connect();
@@ -87,6 +100,7 @@
         $company_email = $data['company_email'];
 		$user_id = $data['user_id'];
 		Database::disconnect();
+		
     }
 ?>
 
@@ -126,7 +140,7 @@
                     </div>
 					
              
-                    <form class="form-horizontal" action="update_comp.php?id=<?php echo $id?>" method="post">
+                    <form class="form-horizontal" action="update_comp.php?id=<?php echo $id?>&val=<?php echo $val?>" method="post">
 
                       <div class="control-group <?php echo !empty($company_nameError)?'error':'';?>">
 
@@ -178,7 +192,17 @@
                       </div>
                      <div class="form-actions">
                           <button type="submit" class="btn btn-success">Update</button>
-                          <a class="btn" href="indeex.php">Back</a>
+                          <?php
+						if($val == "company"){
+						echo "<a class='btn' href='company_index.php'>Back</a>";}
+						elseif($val == "sales"){
+						echo "<a class='btn' href='sales_index.php'>Back</a>";}
+						elseif($val == "prom"){
+						echo "<a class='btn' href='project_manager.php'>Back</a>";}
+						else{
+						echo "<a class='btn' href='indeex.php'>Back</a>";}
+						
+						  ?>
                         </div>
                     </form>
                 </div>

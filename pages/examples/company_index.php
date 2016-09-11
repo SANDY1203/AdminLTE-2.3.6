@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php $val= "company"; ?>
 <html lang="en">
 <head>
    <meta charset="utf-8">
@@ -32,7 +33,7 @@
             </div>
             <div class="row">
 			 <p>
-                    <a href="create.php" class="btn btn-success">Create</a>
+                    <a href="create_project.php?val=<?php echo $val?>" class="btn btn-success">Create</a>
                 </p>
                 <table class="table table-striped table-bordered">
                   <thead>
@@ -64,12 +65,12 @@
                             echo '<td>'. $row['project_status'] . '</td>';
 							echo '<td>'. $row['user_id'] . '</td>';
 							echo '<td width=250>';
-							$com = "company";
-                                echo '<a class="btn" href="read.php?id='.$row['id'].'val='.$com.'">Read</a>';
+							
+                                echo '<a class="btn" href="read_project.php?id='.$row['id'].'&val='.$val.'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update.php?id='.$row['id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_project.php?id='.$row['id'].'&val='.$val.'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_project.php?id='.$row['id'].'&val='.$val.'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }
@@ -79,3 +80,5 @@
             </table>
         </div>
     </div> <!-- /container -->
+	</body>
+	</html>

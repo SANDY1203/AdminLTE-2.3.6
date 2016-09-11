@@ -25,19 +25,19 @@ if($username && $password)
 	}
 	elseif($dbusername == $username && $dbpassword == $password && $dbtype == "sales")
 	{
-		header("Location: indeex.php");
+		header("Location: sales_index.php");
 	}
 	elseif($dbusername == $username && $dbpassword == $password && $dbtype == "project_manager")
 	{
-		header("Location: indeex.php");
+		header("Location: project_manager_index.php");
 	}
 	elseif($dbusername == $username && $dbpassword == $password && $dbtype == "company")
 	{
-		header("Location: indeex.php");
+		header("Location: company_index.php");
 	}
 	else
 	{
-		echo "username or password is wrong";
+		header("Location: index2.php");
 	}
 }
 

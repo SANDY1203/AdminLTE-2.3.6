@@ -1,6 +1,8 @@
 <?php
      
     require 'connect.php';
+	if ( !empty($_GET['val'])) {
+	$val = $_REQUEST['val'];}
  
     if ( !empty($_POST)) {
         // keep track validation errors
@@ -60,8 +62,22 @@
             $q = $pdo->prepare($sql);
             $q->execute(array($id,$proserv_id,$project_contractor_id,$project_price,$project_team,$project_status,$category_proserv_project));
             Database::disconnect();
-            header("Location: indeex.php");
-        }
+if($val == "company")
+		{
+		header("Location: company_index.php");
+		}
+		elseif($val == "sales")
+		{
+		header("Location: sales_index.php");
+		}
+		elseif($val == "prom")
+		{
+		header("Location: project_manager_index.php");
+		}					
+		else
+		{
+		header("Location: indeex.php");
+		}        }
     }
 ?>
 <!DOCTYPE html>
@@ -99,7 +115,7 @@
                         <h3>Create a User</h3>
                     </div>
              
-                    <form class="form-horizontal" action="create_proserv_project.php" method="post">
+                    <form class="form-horizontal" action="create_proserv_project.php?val=<?php echo $val;?>" method="post">
                       <div class="control-group <?php echo !empty($idError)?'error':'';?>">
                         <label class="control-label">id</label>
                         <div class="controls">
@@ -166,8 +182,17 @@
                       </div>
                       <div class="form-actions">
                           <button type="submit" class="btn btn-success">Create</button>
-                          <a class="btn" href="indeex.php">Back</a>
-                        </div>
+						<?php
+						if($val == "company"){
+						echo "<a class='btn' href='company_index.php'>Back</a>";}
+						elseif($val == "sales"){
+						echo "<a class='btn' href='sales_index.php'>Back</a>";}
+						elseif($val == "prom"){
+						echo "<a class='btn' href='project_manager_index.php'>Back</a>";}
+						else{
+						echo "<a class='btn' href='indeex.php'>Back</a>";}
+						?> 
+						</div>
                     </form>
                 </div>
                  

@@ -5,10 +5,14 @@
     if ( !empty($_GET['id'])) {
         $id = $_REQUEST['id'];
     }
+	if ( !empty($_GET['val'])) {
+        $val = $_REQUEST['val'];
+    }
      
     if ( !empty($_POST)) {
         // keep track post values
         $id = $_POST['id'];
+		$val = $_POST['val'];
          
         // delete data
         $pdo = Database::connect();
@@ -17,7 +21,22 @@
         $q = $pdo->prepare($sql);
         $q->execute(array($id));
         Database::disconnect();
-        header("Location: indeex.php");
+        if($val == "company")
+		{
+		header("Location: company_index.php");
+		}
+		elseif($val == "sales")
+		{
+		header("Location: sales_index.php");
+		}
+		elseif($val == "prom")
+		{
+		header("Location: project_manager_index.php");
+		}					
+		else
+		{
+		header("Location: indeex.php");
+		}
          
     }
 ?>
@@ -58,10 +77,21 @@
                      
                     <form class="form-horizontal" action="delete_comp.php" method="post">
                       <input type="hidden" name="id" value="<?php echo $id;?>"/>
+					   <input type="hidden" name="val" value="<?php echo $val;?>"/>
                       <p class="alert alert-error">Are you sure to delete ?</p>
                       <div class="form-actions">
                           <button type="submit" class="btn btn-danger">Yes</button>
-                          <a class="btn" href="indeex.php">No</a>
+                          <?php
+						if($val == "company"){
+						echo "<a class='btn' href='company_index.php'>No</a>";}
+						elseif($val == "sales"){
+						echo "<a class='btn' href='sales_index.php'>No</a>";}
+						elseif($val == "prom"){
+						echo "<a class='btn' href='project_manager_index.php'>No</a>";}
+						else{
+						echo "<a class='btn' href='indeex.php'>No</a>";}
+						
+						  ?>
                         </div>
                     </form>
                 </div>

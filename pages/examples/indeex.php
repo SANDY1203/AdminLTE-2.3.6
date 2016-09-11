@@ -52,6 +52,7 @@
                    $pdo = Database::connect();
                    $sql = 'SELECT * FROM users';
                    foreach ($pdo->query($sql) as $row) {
+							$val = "admin";
                             echo '<tr>';
                             echo '<td>'. $row['id'] . '</td>';
 							echo '<td>'. $row['first_name'] . '</td>';
@@ -350,11 +351,12 @@
                             echo '<td>'. $row['project_status'] . '</td>';
 							echo '<td>'. $row['user_id'] . '</td>';
 							echo '<td width=250>';
-                                echo '<a class="btn" href="read_project.php?id='.$row['id'].'">Read</a>';
+							
+                                echo '<a class="btn" href="read_project.php?id='.$row['id'].'&val='.$val.'">Read</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-success" href="update_project.php?id='.$row['id'].'">Update</a>';
+                                echo '<a class="btn btn-success" href="update_project.php?id='.$row['id'].'&val='.$val.'">Update</a>';
                                 echo ' ';
-                                echo '<a class="btn btn-danger" href="delete_project.php?id='.$row['id'].'">Delete</a>';
+                                echo '<a class="btn btn-danger" href="delete_project.php?id='.$row['id'].'&val='.$val.'">Delete</a>';
                                 echo '</td>';
                             echo '</tr>';
                    }
