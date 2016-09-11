@@ -159,7 +159,10 @@ if($val == "company")
                       <div class="control-group <?php echo !empty($categoryError)?'error':'';?>">
                         <label class="control-label">category</label>
                         <div class="controls">
-                            <input name="category" type="text"  placeholder="category" value="<?php echo !empty($category)?$category:'';?>">
+                            <select name="category" value="<?php echo !empty($category)?$category:'';?>">
+  <option value="project">project</option>
+  <option value="service">service</option>
+  </select>
                             <?php if (!empty($categoryError)): ?>
                                 <span class="help-inline"><?php echo $categoryError;?></span>
                             <?php endif;?>

@@ -183,7 +183,23 @@ if($val == "company")
                       <div class="control-group <?php echo !empty($project_statusError)?'error':'';?>">
                         <label class="control-label">project_status</label>
                         <div class="controls">
-                            <input name="project_status" type="text"  placeholder="project_status" value="<?php echo !empty($project_status)?$project_status:'';?>">
+                            <select name="project_status" value="<?php echo !empty($project_status)?$project_status:'';?>">
+  <option value="lead">lead</option>
+  <option value="opportunity">opportunity</option>
+  <option value="proposal">proposal</option>
+  <option value="quotation">quotation</option>
+  <option value="ra">ra</option>
+  <option value="design">design</option>
+  <option value="testing">testing</option>
+  <option value="development">development</option>
+  <option value="support">support</option>
+  <option value="maintenance">maintenance</option>
+  <option value="invoice">invoice</option>
+  <option value="delivery">delivery</option>
+  <option value="cancelled">cancelled</option>
+  <option value="delayed">delayed</option>
+  <option value="completed">completed</option>
+  </select>
                             <?php if (!empty($project_statusError)): ?>
                                 <span class="help-inline"><?php echo $project_statusError;?></span>
                             <?php endif;?>
@@ -192,7 +208,10 @@ if($val == "company")
 					  <div class="control-group <?php echo !empty($category_proserv_projectError)?'error':'';?>">
                         <label class="control-label">category_proserv_project</label>
                         <div class="controls">
-                            <input name="category_proserv_project" type="text"  placeholder="category_proserv_project" value="<?php echo !empty($category_proserv_project)?$category_proserv_project:'';?>">
+                            <select name="category_proserv_project" value="<?php echo !empty($category_proserv_project)?$category_proserv_project:'';?>">
+  <option value="project">project</option>
+  <option value="service">service</option>
+  </select>
                             <?php if (!empty($category_proserv_projectError)): ?>
                                 <span class="help-inline"><?php echo $category_proserv_projectError;?></span>
                             <?php endif;?>
