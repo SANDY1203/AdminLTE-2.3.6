@@ -502,5 +502,60 @@
             </table>
         </div>
     </div> <!-- /container -->
+	<div class="container">
+            <div class="row">
+                <h3>QUOTATION TABLE DATA</h3>
+            </div>
+            <div class="row">
+			 <p>
+                    <a href="create_quotation.php?val=<?php echo $val?>" class="btn btn-success">Create</a>
+                </p>
+                <table class="table table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>quotation_id</th>
+					  <th>lead</th>
+					  <th>proposal</th>
+					  <th>design</th>
+					  <th>testing</th>
+					  <th>development</th>
+					  <th>maintenance</th>
+					  <th>invoice</th>
+					  <th>delivery</th>
+					  <th>user_id</th>
+					  <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                   $pdo = Database::connect();
+                   $sql = 'SELECT * FROM quotation';
+                   foreach ($pdo->query($sql) as $row) {
+                            echo '<tr>';
+                            echo '<td>'. $row['id'] . '</td>';
+							echo '<td>'. $row['lead'] . '</td>';
+							echo '<td>'. $row['proposal'] . '</td>';
+                            echo '<td>'. $row['design'] . '</td>';
+							echo '<td>'. $row['testing'] . '</td>';
+							echo '<td>'. $row['development'] . '</td>';
+							echo '<td>'. $row['maintenance'] . '</td>';
+                            echo '<td>'. $row['invoice'] . '</td>';
+							echo '<td>'. $row['delivery'] . '</td>';
+							echo '<td>'. $row['user_id'] . '</td>';
+							echo '<td width=250>';
+                                echo '<a class="btn" href="read_quotation.php?id='.$row['id'].'&val='.$val.'">Read</a>';
+                                echo ' ';
+                                echo '<a class="btn btn-success" href="update_quotation.php?id='.$row['id'].'&val='.$val.'">Update</a>';
+                                echo ' ';
+                                echo '<a class="btn btn-danger" href="delete_quotation.php?id='.$row['id'].'&val='.$val.'">Delete</a>';
+                                echo '</td>';
+                            echo '</tr>';
+                   }
+                   Database::disconnect();
+                  ?>
+                  </tbody>
+            </table>
+        </div>
+    </div> <!-- /container -->
   </body>
 </html>
