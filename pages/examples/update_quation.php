@@ -88,7 +88,7 @@
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>Update a quation</h3>
+                        <h3>Update a question</h3>
                     </div>
              
                     <form class="form-horizontal" action="update_quation.php?id=<?php echo $id?>" method="post">

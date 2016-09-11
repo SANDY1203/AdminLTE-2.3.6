@@ -50,7 +50,7 @@
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>Read a Customer</h3>
+                        <h3>Read a User</h3>
                     </div>
                      
                     <div class="form-horizontal" >

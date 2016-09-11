@@ -131,7 +131,7 @@ if($val == "company")
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>Update a Customer</h3>
+                        <h3>Update a PROSERV</h3>
                     </div>
              
                     <form class="form-horizontal" action="update_proserv.php?id=<?php echo $id?>&val=<?php echo $val?>" method="post">

@@ -64,7 +64,7 @@
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>Create a COMPANY</h3>
+                        <h3>Create a QUESTION</h3>
                     </div>
              
                     <form class="form-horizontal" action="create_quation.php" method="post">

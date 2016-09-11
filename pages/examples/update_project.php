@@ -143,7 +143,7 @@
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>Update a Customer</h3>
+                        <h3>Update a Project</h3>
                     </div>
              
                     <form class="form-horizontal" action="update_project.php?id=<?php echo $id?>&val=<?php echo $val?>" method="post">

@@ -73,7 +73,7 @@
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>Delete a User</h3>
+                        <h3>Delete a Project</h3>
                     </div>
                      
                     <form class="form-horizontal" action="delete_project.php" method="post">

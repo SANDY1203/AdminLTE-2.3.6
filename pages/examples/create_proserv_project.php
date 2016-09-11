@@ -112,7 +112,7 @@ if($val == "company")
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>Create a User</h3>
+                        <h3>Create a PROSERV PROJECt</h3>
                     </div>
              
                     <form class="form-horizontal" action="create_proserv_project.php?val=<?php echo $val;?>" method="post">
