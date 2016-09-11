@@ -161,7 +161,11 @@
                       <div class="control-group <?php echo !empty($roleError)?'error':'';?>">
                         <label class="control-label">role</label>
                         <div class="controls">
-                            <input name="role" type="text"  placeholder="role" value="<?php echo !empty($role)?$role:'';?>">
+                            <select name="role" value="<?php echo !empty($role)?$role:'';?>">
+  <option value="sales">sales</option>
+  <option value="project_manager">project_manager</option>
+  <option value="company">company</option>
+  </select> 
                             <?php if (!empty($roleError)): ?>
                                 <span class="help-inline"><?php echo $roleError;?></span>
                             <?php endif;?>
