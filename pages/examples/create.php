@@ -146,6 +146,7 @@
                         <label class="control-label">role</label>
                         <div class="controls">
                             <select name="role" value="<?php echo !empty($role)?$role:'';?>">
+<option value="admin">admin</option>	
   <option value="sales">sales</option>
   <option value="project_manager">project_manager</option>
   <option value="company">company</option>

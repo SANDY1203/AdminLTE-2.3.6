@@ -187,7 +187,7 @@
                             <?php endif;?>
                         </div>
                       </div>
-					  </div>
+					  
                       <div class="control-group <?php echo !empty($user_idError)?'error':'';?>">
                         <label class="control-label">user_id</label>
                         <div class="controls">
