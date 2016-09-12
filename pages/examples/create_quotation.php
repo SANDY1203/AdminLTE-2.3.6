@@ -1,70 +1,68 @@
 <?php
-     require 'connect.php';
-	 if ( !empty($_GET['val'])) {
+     
+    require 'connect.php';
+	if ( !empty($_GET['val'])) {
 	$val = $_REQUEST['val'];}
-       if ( !empty($_POST)) {
+ 
+    if ( !empty($_POST)) {
         // keep track validation errors
         $leadError = null;
         $opportunityError = null;
-		$proposalError = null;
-        $quotationError = null;
-		$ra = null;
-		$designError = null;
+        $proposalError = null;
+		$quotationError = null;
+        $raError = null;
+        $designError = null;
         $testingError = null;
-		$developmentError = null;
+        $developmentError = null;
         $supportError = null;
-		$maintenanceError = null;
-		$deliveryError = null;
-        $invoiceError = null;
-		$cancelledError = null;
-        $delayedError = null;
+        $maintenanceError = null;
+		$invoiceError = null;
+        $deliveryError = null;
+        $cancelledError = null;
+        $delayedError = null; 
 		$completedError = null;
-		$user_id = null;
-       
-         
+        $user_idError = null;
         // keep track post values
 		$lead = $_POST['lead'];
-		$opportunity = $_POST['opportunity'];
-        $proposal = $_POST['proposal'];
+        $opportunity = $_POST['opportunity'];
+		$proposal = $_POST['proposal'];
         $quotation = $_POST['quotation'];
-		$ra = $_POST['ra'];
+        $ra = $_POST['ra'];
 		$design = $_POST['design'];
 		$testing = $_POST['testing'];
-        $development = $_POST['development'];
+		$development = $_POST['development'];
         $support = $_POST['support'];
 		$maintenance = $_POST['maintenance'];
-		$delivery = $_POST['delivery'];
-		$invoice = $_POST['invoice'];
-        $cancelled = $_POST['cancelled'];
-        $delayed = $_POST['delayed'];
+        $invoice = $_POST['invoice'];
+        $delivery = $_POST['delivery'];
+		$cancelled = $_POST['cancelled'];
+		$delayed = $_POST['delayed'];
 		$completed = $_POST['completed'];
-		$user_id = $_POST['user_id'];
+        $user_id = $_POST['user_id'];
 		         
         // validate input
         $valid = true;
-       
-  		if (empty($lead)) {
+        if (empty($lead)) {
             $leadError = 'Please enter lead';
             $valid = false;
         }
 		if (empty($opportunity)) {
-            $opportunityError = 'Please enter opportunity';
+            $opportunityError = 'Please enter name';
             $valid = false;
         }
          if (empty($proposal)) {
             $proposalError = 'Please enter proposal';
             $valid = false;
         }
-		
         if (empty($quotation)) {
-            $quotationError = 'Please enter quotation';
+            $quotationError = 'Please enter quotation Address';
             $valid = false;
-        }
-		 if (empty($ra)) {
+        } 
+         if (empty($ra)) {
             $raError = 'Please enter ra';
             $valid = false;
         }
-		if (empty($design)) {
+        if (empty($design)) {
             $designError = 'Please enter design';
             $valid = false;
         }
@@ -72,54 +70,50 @@
             $testingError = 'Please enter testing';
             $valid = false;
         }
-         if (empty($development)) {
+		if (empty($development)) {
             $developmentError = 'Please enter development';
             $valid = false;
         }
-		
-        if (empty($support)) {
-            $supportError = 'Please enter support';
+		if (empty($support)) {
+            $supportError = 'Please enter name';
             $valid = false;
         }
-		 if (empty($maintenance)) {
+         if (empty($maintenance)) {
             $maintenanceError = 'Please enter maintenance';
             $valid = false;
         }
-		if (empty($invoice)) {
-            $invoiceError = 'Please enter invoice';
+        if (empty($invoice)) {
+            $invoiceError = 'Please enter invoice Address';
             $valid = false;
-        }
-		if (empty($delivery)) {
+        } 
+         if (empty($delivery)) {
             $deliveryError = 'Please enter delivery';
             $valid = false;
         }
-		if (empty($cancelled)) {
+        if (empty($cancelled)) {
             $cancelledError = 'Please enter cancelled';
             $valid = false;
         }
-         if (empty($delayed)) {
+		if (empty($delayed)) {
             $delayedError = 'Please enter delayed';
             $valid = false;
         }
-		
-        if (empty($completed)) {
+		if (empty($completed)) {
             $completedError = 'Please enter completed';
             $valid = false;
         }
-		 if (empty($user_id)) {
-            $user_idError = 'Please enter user_id';
+		if (empty($user_id)) {
+            $user_idrror = 'Please enter name';
             $valid = false;
         }
-        
-     
          
         // insert data
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO quotation (lead,opportunity,proposal,quotation,ra,design,development,testing,support,maintenance,invoice,delivery,cancelled,delayed,completed,user_id) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO quotation (lead,opportunity,proposal,quotation,ra,design,testing,development,support,maintenance,invoice,delivery,cancelled,completed,user_id) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $q = $pdo->prepare($sql);
-            $q->execute(array($lead,$opportunity,$proposal,$quotation,$ra,$design,$development,$testing,$support,$maintenance,$invoice,$delivery,$cancelled,$delayed,$completed,$user_id));
+            $q->execute(array($lead,$opportunity,$proposal,$quotation,$ra,$design,$testing,$development,$support,$maintenance,$invoice,$delivery,$cancelled,$completed,$user_id));
             Database::disconnect();
             if($val == "company")
 		{
@@ -172,16 +166,16 @@
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>Create a Quotation</h3>
+                        <h3>Create a Project</h3>
                     </div>
              
                     <form class="form-horizontal" action="create_quotation.php?val=<?php echo $val?>" method="post">
-                      <div class="control-group <?php echo !empty($leadError)?'error':'';?>">
+                      <div class="control-group <?php echo !empty($idError)?'error':'';?>">
                         <label class="control-label">lead</label>
                         <div class="controls">
                             <input name="lead" type="text"  placeholder="lead" value="<?php echo !empty($lead)?$lead:'';?>">
-                            <?php if (!empty($leadError)): ?>
-                                <span class="help-inline"><?php echo $lead;?></span>
+                            <?php if (!empty($idError)): ?>
+                                <span class="help-inline"><?php echo $idError;?></span>
                             <?php endif; ?>
                         </div>
                       </div>
@@ -206,7 +200,7 @@
                       <div class="control-group <?php echo !empty($quotationError)?'error':'';?>">
                         <label class="control-label">quotation</label>
                         <div class="controls">
-                            <input name="quotation" type="text" placeholder="quotation" value="<?php echo !empty($quotation)?$quotation:'';?>">
+                            <input name="quotation" type="text" placeholder="quotation Address" value="<?php echo !empty($quotation)?$quotation:'';?>">
                             <?php if (!empty($quotationError)): ?>
                                 <span class="help-inline"><?php echo $quotationError;?></span>
                             <?php endif;?>
@@ -215,46 +209,47 @@
 					  <div class="control-group <?php echo !empty($raError)?'error':'';?>">
                         <label class="control-label">ra</label>
                         <div class="controls">
-                            <input name="ra" type="text"  placeholder="ra" value="<?php echo !empty($ra)?$ra:'';?>">
+                            <input name="ra" type="ra"  placeholder="ra" value="<?php echo !empty($ra)?$ra:'';?>">
                             <?php if (!empty($raError)): ?>
                                 <span class="help-inline"><?php echo $raError;?></span>
                             <?php endif; ?>
                         </div>
                       </div>
-					  <div class="control-group <?php echo !empty($designError)?'error':'';?>">
+                      <div class="control-group <?php echo !empty($designError)?'error':'';?>">
                         <label class="control-label">design</label>
                         <div class="controls">
                             <input name="design" type="text"  placeholder="design" value="<?php echo !empty($design)?$design:'';?>">
+  
                             <?php if (!empty($designError)): ?>
-                                <span class="help-inline"><?php echo $design;?></span>
-                            <?php endif; ?>
+                                <span class="help-inline"><?php echo $designError;?></span>
+                            <?php endif;?>
                         </div>
                       </div>
-					  <div class="control-group <?php echo !empty($testingError)?'error':'';?>">
+                      <div class="control-group <?php echo !empty($testingError)?'error':'';?>">
                         <label class="control-label">testing</label>
                         <div class="controls">
                             <input name="testing" type="text"  placeholder="testing" value="<?php echo !empty($testing)?$testing:'';?>">
                             <?php if (!empty($testingError)): ?>
                                 <span class="help-inline"><?php echo $testingError;?></span>
-                            <?php endif; ?>
+                            <?php endif;?>
                         </div>
                       </div>
-					  <div class="control-group <?php echo !empty($developmentError)?'error':'';?>">
+					   <div class="control-group <?php echo !empty($developmentError)?'error':'';?>">
                         <label class="control-label">development</label>
                         <div class="controls">
-                            <input name="development" type="text"  placeholder="development" value="<?php echo !empty($development)?$development:'';?>">
+                            <input name="development" type="int"  placeholder="development" value="<?php echo !empty($development)?$development:'';?>">
                             <?php if (!empty($developmentError)): ?>
                                 <span class="help-inline"><?php echo $developmentError;?></span>
                             <?php endif; ?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($supportError)?'error':'';?>">
+					  <div class="control-group <?php echo !empty($supportError)?'error':'';?>">
                         <label class="control-label">support</label>
                         <div class="controls">
-                            <input name="support" type="text" placeholder="support" value="<?php echo !empty($support)?$support:'';?>">
+                            <input name="support" type="text"  placeholder="support" value="<?php echo !empty($support)?$support:'';?>">
                             <?php if (!empty($supportError)): ?>
                                 <span class="help-inline"><?php echo $supportError;?></span>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </div>
                       </div>
 					  <div class="control-group <?php echo !empty($maintenanceError)?'error':'';?>">
@@ -262,41 +257,42 @@
                         <div class="controls">
                             <input name="maintenance" type="text"  placeholder="maintenance" value="<?php echo !empty($maintenance)?$maintenance:'';?>">
                             <?php if (!empty($maintenanceError)): ?>
-                                <span class="help-inline"><?php echo $maintenanceError;?></span>
+                                <span class="help-inline"><?php echo $proposalError1;?></span>
                             <?php endif; ?>
                         </div>
                       </div>
-					  <div class="control-group <?php echo !empty($invoiceError)?'error':'';?>">
+                      <div class="control-group <?php echo !empty($invoiceError)?'error':'';?>">
                         <label class="control-label">invoice</label>
                         <div class="controls">
-                            <input name="invoice" type="text"  placeholder="invoice" value="<?php echo !empty($invoice)?$invoice:'';?>">
+                            <input name="invoice" type="text" placeholder="invoice Address" value="<?php echo !empty($invoice)?$invoice:'';?>">
                             <?php if (!empty($invoiceError)): ?>
-                                <span class="help-inline"><?php echo $invoice;?></span>
-                            <?php endif; ?>
+                                <span class="help-inline"><?php echo $invoiceError;?></span>
+                            <?php endif;?>
                         </div>
                       </div>
 					  <div class="control-group <?php echo !empty($deliveryError)?'error':'';?>">
                         <label class="control-label">delivery</label>
                         <div class="controls">
-                            <input name="delivery" type="text"  placeholder="delivery" value="<?php echo !empty($delivery)?$delivery:'';?>">
+                            <input name="delivery" type="delivery"  placeholder="delivery" value="<?php echo !empty($delivery)?$delivery:'';?>">
                             <?php if (!empty($deliveryError)): ?>
                                 <span class="help-inline"><?php echo $deliveryError;?></span>
                             <?php endif; ?>
                         </div>
                       </div>
-					  <div class="control-group <?php echo !empty($cancelledError)?'error':'';?>">
+                      <div class="control-group <?php echo !empty($cancelledrror)?'error':'';?>">
                         <label class="control-label">cancelled</label>
                         <div class="controls">
                             <input name="cancelled" type="text"  placeholder="cancelled" value="<?php echo !empty($cancelled)?$cancelled:'';?>">
+  
                             <?php if (!empty($cancelledError)): ?>
                                 <span class="help-inline"><?php echo $cancelledError;?></span>
-                            <?php endif; ?>
+                            <?php endif;?>
                         </div>
                       </div>
-                      <div class="control-group <?php echo !empty($delayedError)?'error':'';?>">
+					   <div class="control-group <?php echo !empty($delayedError)?'error':'';?>">
                         <label class="control-label">delayed</label>
                         <div class="controls">
-                            <input name="delayed" type="text" placeholder="delayed" value="<?php echo !empty($delayed)?$delayed:'';?>">
+                            <input name="delayed" type="text"  placeholder="delayed" value="<?php echo !empty($delayed)?$delayed:'';?>">
                             <?php if (!empty($delayedError)): ?>
                                 <span class="help-inline"><?php echo $delayedError;?></span>
                             <?php endif;?>
@@ -305,10 +301,10 @@
 					  <div class="control-group <?php echo !empty($completedError)?'error':'';?>">
                         <label class="control-label">completed</label>
                         <div class="controls">
-                            <input name="completed" type="text" placeholder="completed" value="<?php echo !empty($completed)?$completed:'';?>">
+                            <input name="completed" type="text"  placeholder="completed" value="<?php echo !empty($completed)?$completed:'';?>">
                             <?php if (!empty($completedError)): ?>
                                 <span class="help-inline"><?php echo $completedError;?></span>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </div>
                       </div>
 					  <div class="control-group <?php echo !empty($user_idError)?'error':'';?>">
@@ -320,7 +316,7 @@
                             <?php endif; ?>
                         </div>
                       </div>
-					 <div class="form-actions">
+                      <div class="form-actions">
                           <button type="submit" class="btn btn-success">Create</button>
                           <?php
 						if($val == "company"){
