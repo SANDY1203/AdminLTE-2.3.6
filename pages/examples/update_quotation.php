@@ -1,9 +1,21 @@
 <?php
-     require 'connect.php';
+    require 'connect.php';
+ 
+    $id = null;
+    if ( !empty($_GET['id'])) {
+        $id = $_REQUEST['id'];
+    }
 	 if ( !empty($_GET['val'])) {
-	$val = $_REQUEST['val'];}
-       if ( !empty($_POST)) {
+        $val = $_REQUEST['val'];
+    }
+     
+    if ( null==$id ) {
+        header("Location: indeex.php");
+    }
+     
+    if ( !empty($_POST)) {
         // keep track validation errors
+        
         $leadError = null;
         $opportunityError = null;
 		$proposalError = null;
@@ -20,10 +32,11 @@
         $delayError = null;
 		$completedError = null;
 		$user_id = null;
-       
+    
          
         // keep track post values
-		$lead = $_POST['lead'];
+     	
+        $lead = $_POST['lead'];
 		$opportunity = $_POST['opportunity'];
         $proposal = $_POST['proposal'];
         $quotation = $_POST['quotation'];
@@ -39,11 +52,12 @@
         $delay = $_POST['delay'];
 		$completed = $_POST['completed'];
 		$user_id = $_POST['user_id'];
-		         
+		
         // validate input
         $valid = true;
        
-  		if (empty($lead)) {
+        }
+		if (empty($lead)) {
             $leadError = 'Please enter lead';
             $valid = false;
         }
@@ -110,16 +124,15 @@
             $user_idError = 'Please enter user_id';
             $valid = false;
         }
-        
-     
+   
          
-        // insert data
+        // update data
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO quotation (lead,opportunity,proposal,quotation,ra,design,development,testing,support,maintenance,invoice,delivery,cancelled,delay,completed,user_id) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $q = $pdo->prepare($sql);
-            $q->execute(array($lead,$opportunity,$proposal,$quotation,$ra,$design,$development,$testing,$support,$maintenance,$invoice,$delivery,$cancelled,$delay,$completed,$user_id));
+            $sql = "UPDATE quotation set lead = ?, opportunity = ?, proposal = ?, quotation = ?, ra = ?, design = ?, development = ?, testing = ?, support = ?, maintenance = ?, invoice = ?, delivery = ?, cancelled = ?, delay = ?, completed = ?, user_id = ? WHERE id = ?";
+			$q = $pdo->prepare($sql);
+            $q->execute(array($lead,$opportunity,$proposal,$quotation,$ra,$design,$development,$testing,$support,$maintenance,$invoice,$delivery,$cancelled,$delay,$completed,$user_id,$id));
             Database::disconnect();
             if($val == "company")
 		{
@@ -131,15 +144,41 @@
 		}
 		elseif($val == "prom")
 		{
-		header("Location: project_manager_index.php");
+		header("Location: project_manager.php");
 		}					
 		else
 		{
 		header("Location: indeex.php");
 		}
         }
+     else {
+        $pdo = Database::connect();
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT * FROM quotation where id = ?";
+        $q = $pdo->prepare($sql);
+        $q->execute(array($id));
+        $data = $q->fetch(PDO::FETCH_ASSOC);
+		$lead = $data['lead'];
+        $opportunity = $data['opportunity'];
+        $proposal = $data['proposal'];
+        $quotation = $data['quotation'];
+		$ra = $data['ra'];
+        $design = $data['design'];
+        $development = $data['development'];
+        $testing = $data['testing'];
+		$support = $data['support'];
+        $maintenance = $data['maintenance'];
+        $invoice = $data['invoice'];
+        $delivery = $data['delivery'];
+		$cancelled = $data['cancelled'];
+        $delay = $data['delay'];
+        $completed = $data['completed'];
+		$user_id = $data['user_id'];
+		Database::disconnect();
+		
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -172,10 +211,12 @@
      
                 <div class="span10 offset1">
                     <div class="row">
-                        <h3>Create a Quotation</h3>
+                        <h3>Update a QUOTATION</h3>
                     </div>
+					
              
-                    <form class="form-horizontal" action="create_quotation.php?val=<?php echo $val?>" method="post">
+                    <form class="form-horizontal" action="update_quotation.php?id=<?php echo $id?>&val=<?php echo $val?>" method="post">
+
                       <div class="control-group <?php echo !empty($leadError)?'error':'';?>">
                         <label class="control-label">lead</label>
                         <div class="controls">
@@ -320,15 +361,15 @@
                             <?php endif; ?>
                         </div>
                       </div>
-					 <div class="form-actions">
-                          <button type="submit" class="btn btn-success">Create</button>
+                     <div class="form-actions">
+                          <button type="submit" class="btn btn-success">Update</button>
                           <?php
 						if($val == "company"){
 						echo "<a class='btn' href='company_index.php'>Back</a>";}
 						elseif($val == "sales"){
 						echo "<a class='btn' href='sales_index.php'>Back</a>";}
 						elseif($val == "prom"){
-						echo "<a class='btn' href='project_manager_index.php'>Back</a>";}
+						echo "<a class='btn' href='project_manager.php'>Back</a>";}
 						else{
 						echo "<a class='btn' href='indeex.php'>Back</a>";}
 						
@@ -336,8 +377,7 @@
                         </div>
                     </form>
                 </div>
-                 
-    </div> <!-- /container -->
+               
+	</div><!-- /container -->
   </body>
 </html>
-

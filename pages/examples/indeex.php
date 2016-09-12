@@ -513,7 +513,7 @@
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
-                      <th>quotation_id</th>
+                      <th>id</th>
 					  <th>lead</th>
 					  <th>proposal</th>
 					  <th>design</th>
