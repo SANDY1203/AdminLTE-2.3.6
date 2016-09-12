@@ -20,6 +20,7 @@
         Database::disconnect();
     }
 ?>
+
  
 <!DOCTYPE html>
 <html lang="en">
@@ -182,7 +183,7 @@
                         <label class="control-label">delayed</label>
                         <div class="controls">
                             <label class="checkbox">
-                                <?php echo $data['delayed'];?>
+                                <?php echo $data['delay'];?>
                             </label>
                         </div>
                       </div>
@@ -215,6 +216,13 @@
 						echo "<a class='btn' href='indeex.php'>Back</a>";}
 						
 						  ?>
+                       </div>
+					   <div class="form-actions">
+                          <?php
+
+						  echo '<a class="btn" href="print_quotation.php?id='.$id.'&val='.$val.'">Print</a>';
+								
+							?>
                        </div>
                      
                       
