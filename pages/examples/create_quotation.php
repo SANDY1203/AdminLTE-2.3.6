@@ -15,19 +15,13 @@
         $testingError = null;
         $developmentError = null;
         $supportError = null;
-<<<<<<< HEAD
+
 		$maintenanceError = null;
 		$deliveryError = null;
         $invoiceError = null;
 		$cancelledError = null;
         $delayError = null;
-=======
-        $maintenanceError = null;
-		$invoiceError = null;
-        $deliveryError = null;
-        $cancelledError = null;
-        $delayedError = null; 
->>>>>>> origin/combine
+
 		$completedError = null;
         $user_idError = null;
         // keep track post values
@@ -41,17 +35,12 @@
 		$development = $_POST['development'];
         $support = $_POST['support'];
 		$maintenance = $_POST['maintenance'];
-<<<<<<< HEAD
+
 		$delivery = $_POST['delivery'];
 		$invoice = $_POST['invoice'];
         $cancelled = $_POST['cancelled'];
         $delay = $_POST['delay'];
-=======
-        $invoice = $_POST['invoice'];
-        $delivery = $_POST['delivery'];
-		$cancelled = $_POST['cancelled'];
-		$delayed = $_POST['delayed'];
->>>>>>> origin/combine
+
 		$completed = $_POST['completed'];
         $user_id = $_POST['user_id'];
 		         
@@ -109,13 +98,10 @@
             $cancelledError = 'Please enter cancelled';
             $valid = false;
         }
-<<<<<<< HEAD
+
          if (empty($delay)) {
             $delayError = 'Please enter delay';
-=======
-		if (empty($delayed)) {
-            $delayedError = 'Please enter delayed';
->>>>>>> origin/combine
+
             $valid = false;
         }
 		if (empty($completed)) {
@@ -131,15 +117,11 @@
         if ($valid) {
             $pdo = Database::connect();
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-<<<<<<< HEAD
+
             $sql = "INSERT INTO quotation (lead,opportunity,proposal,quotation,ra,design,development,testing,support,maintenance,invoice,delivery,cancelled,delay,completed,user_id) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $q = $pdo->prepare($sql);
             $q->execute(array($lead,$opportunity,$proposal,$quotation,$ra,$design,$development,$testing,$support,$maintenance,$invoice,$delivery,$cancelled,$delay,$completed,$user_id));
-=======
-            $sql = "INSERT INTO quotation (lead,opportunity,proposal,quotation,ra,design,testing,development,support,maintenance,invoice,delivery,cancelled,completed,user_id) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $q = $pdo->prepare($sql);
-            $q->execute(array($lead,$opportunity,$proposal,$quotation,$ra,$design,$testing,$development,$support,$maintenance,$invoice,$delivery,$cancelled,$completed,$user_id));
->>>>>>> origin/combine
+
             Database::disconnect();
             if($val == "company")
 		{
@@ -315,21 +297,14 @@
                             <?php endif;?>
                         </div>
                       </div>
-<<<<<<< HEAD
+
                       <div class="control-group <?php echo !empty($delayError)?'error':'';?>">
                         <label class="control-label">delay</label>
                         <div class="controls">
                             <input name="delay" type="text" placeholder="delay" value="<?php echo !empty($delay)?$delay:'';?>">
                             <?php if (!empty($delayError)): ?>
                                 <span class="help-inline"><?php echo $delayError;?></span>
-=======
-					   <div class="control-group <?php echo !empty($delayedError)?'error':'';?>">
-                        <label class="control-label">delayed</label>
-                        <div class="controls">
-                            <input name="delayed" type="text"  placeholder="delayed" value="<?php echo !empty($delayed)?$delayed:'';?>">
-                            <?php if (!empty($delayedError)): ?>
-                                <span class="help-inline"><?php echo $delayedError;?></span>
->>>>>>> origin/combine
+
                             <?php endif;?>
                         </div>
                       </div>

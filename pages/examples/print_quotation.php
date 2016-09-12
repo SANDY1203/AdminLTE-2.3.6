@@ -20,7 +20,7 @@ if ( !empty($_GET['id'])) {
 								$pdf->AddPage();
 								$pdf->SetFont('Arial','',14);
 								//Table with 20 rows and 4 columns
-								$pdf->SetWidths(array(30,150));
+								$pdf->SetWidths(array(35,150));
 								srand(microtime()*1000000);
 								
 							$pdf->Row(array("id",$row['id']));
